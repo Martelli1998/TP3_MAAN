@@ -229,9 +229,9 @@ def main():
         y = lista_cierre
         
         plt.plot(x, y,'o-')
-        def cm_to_inch(value):
-            return value/2.54
-        plt.figure(figsize=(cm_to_inch(15),cm_to_inch(10)))
+        plt.title(q)
+        plt.xlabel('date')
+        plt.ylabel('Price')
         #plt.show()  #descomentar para poder ver los graficos
         ############### Grafico ##########
 
