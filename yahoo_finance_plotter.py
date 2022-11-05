@@ -232,7 +232,7 @@ def main():
         plt.title(q)
         plt.xlabel('date')
         plt.ylabel('Price')
-        #plt.show()  #descomentar para poder ver los graficos
+        plt.show()  #descomentar para poder ver los graficos
         ############### Grafico ##########
 
     
