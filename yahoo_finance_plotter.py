@@ -4,7 +4,7 @@ import sys
 import urllib.request
 import matplotlib.pyplot as plt
 
-
+#hola
 ############################# FUNCIONES AUXILIARES DEFINIDAS POR EL GRUPO ############################### 
 
 def leer_cfg(filename):
