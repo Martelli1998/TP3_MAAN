@@ -44,7 +44,7 @@ def calculo_rendimiento(lista_cierre,lista_dias):
         rendimiento = (lista_cierre[i+1]/lista_cierre[i])-1 #calculo rendimiento diario
         rendimientos.append(rendimiento)
         rendimiento_1 = round(rendimiento*100,2)
-        print(str(rendimiento_1)+'% ' + to_ymd(lista_dias[i+1])) #redondeamos el valor y agregamos el simbolo de porcentaje para una mejor lectura
+        print(str(rendimiento_1)+'% ' + to_ymd(lista_dias[i+1])) #redondeamos el valor y agregamos el simbolo de porcentaje para una mejor lectura en terminal
     return rendimientos
 
 def media_movil(lista_cierre):
@@ -61,10 +61,10 @@ def media_movil(lista_cierre):
 ################################### Ejercicio 5 ###########################################################
 
 def periodo_maxima_cantidad_dias_positivos(lista_rendimientos,lista_dias):  #Chequiar caso en que el periodo entre en final de lista
-    contador_indice_max = 0
-    longitud = 0
-    longitud_actual = 0
-    indice = 0
+    contador_indice_max = 0 
+    longitud = 0 # la longitud mas larga encontrada hasta el momento
+    longitud_actual = 0 # en cada iteracion del if guardamos la longitud del periodo y la comparamos contra la longitud total
+    indice = 0 #el indice se guarda
     for i in range(len(lista_rendimientos)):
         if lista_rendimientos[i] > 0:
             longitud_actual += 1
@@ -72,24 +72,24 @@ def periodo_maxima_cantidad_dias_positivos(lista_rendimientos,lista_dias):  #Che
             if longitud_actual == 1:
                 indice = i
         else:
-            if longitud_actual > longitud:
+            if longitud_actual > longitud: # si la longitud actual es mayor queremos actualizar el contador de longitud global
                 longitud = longitud_actual
                 contador_indice_max = indice
-            longitud_actual = 0
+            longitud_actual = 0 #resetiamos la longitud actual a 0 para la proxima iteracion.
 
     if longitud_actual > longitud:
         longitud = longitud_actual
         contador_indice_max = indice
 
-    if longitud > 0:
+    if longitud > 0: 
         print('comienzo del periodo rendimientos positivos: ', to_ymd(lista_dias[contador_indice_max+1]))
         print('final del perido rendimientos positivos : ', to_ymd(lista_dias[contador_indice_max+longitud]))
     
-    else:
+    else: #si no hay longitud es debido a que no hubo rendimientos negativos en el periodo.
         print("No hay rendimientos negativos en el periodo")
     
     
-def Periodo_maxima_cantidad_dias_negativos(lista_rendimientos, lista_dias):
+def Periodo_maxima_cantidad_dias_negativos(lista_rendimientos, lista_dias): #funcion analoga a periodo_maxima_cantidad_dias_positivos.
     contador_indice_max = 0 
     longitud = 0
     longitud_actual = 0
