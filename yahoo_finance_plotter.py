@@ -235,6 +235,46 @@ def main():
         plt.show()  #descomentar para poder ver los graficos
         ############### Grafico ##########
 
+    parametros = leer_cfg('input_ejercicio_5.cfg')[0:3]
+    acciones = leer_cfg('input_ejercicio_5.cfg')[3:]
+    quotes = acciones
+    print()
+    print('ejercicio 6 cambio de acciones')
+    print(quotes)
+    print(parametros)
+
+    #nuevo for loop para el analisis de las acciones ejercicio 6
+    for q in quotes:
+        print()
+        # Obtenemos el JSON.
+        get_quote_json(q,parametros[0],parametros[1],parametros[2])
+        print()
+        # Extraemos y procesamos la informacion.
+        lista_cierre = get_quote_json(q,parametros[0],parametros[1],parametros[2])['chart']['result'][0]['indicators']['quote'][0]['close']
     
+        lista_dias = get_quote_json(q,parametros[0],parametros[1],parametros[2])['chart']['result'][0]['timestamp']
+        print(q)
+        print()
+        print('media movil M = 6',media_movil(lista_cierre))
+        print()        
+        minimo_rendimiento(lista_cierre,lista_dias)
+
+
+        #    # Agregamos el grafico de la serie.
+        ################## Graficamos #####
+        lista_dias_Y_M_D = []
+        for i in lista_dias:
+            lista_dias_Y_M_D.append(to_ymd(i))
+        
+        x = lista_dias_Y_M_D
+        y = lista_cierre
+        
+        plt.plot(x, y,'o-')
+        plt.title(q)
+        plt.xlabel('date')
+        plt.ylabel('Price')
+        plt.show()  #descomentar para poder ver los graficos
+        ############### Grafico ##########
+
 if __name__ == '__main__':
     main()
