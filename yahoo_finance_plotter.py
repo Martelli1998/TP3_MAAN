@@ -153,7 +153,7 @@ def maximo_rendimiento(lista_cierre,lista_dias):
             if i < j:
                 rend = (lista_cierre[j]/lista_cierre[i])-1 #calculo rendimiento diario
                 rendimientos_diarios.append(rend)
-            diccionario_rendimientos[(lista_cierre[j]/lista_cierre[i])-1] = ['fecha_compra',to_ymd(lista_dias[i]-1),'fecha_venta',to_ymd(lista_dias[j]-1),'cantidad_dias',(lista_dias[j]-lista_dias[i])/86400]
+            diccionario_rendimientos[(lista_cierre[j]/lista_cierre[i])-1] = ['fecha_compra',to_ymd(lista_dias[i]),'fecha_venta',to_ymd(lista_dias[j]),'cantidad_dias',(lista_dias[j]-lista_dias[i])/86400]
             '''cada dia tiene 86400 segundos por lo cual dividimos el tiempo en formato posix por la cantidad de segundos del dia y nos retorna los dias que transcurieron'''
 
     valor_rendiminto_max = max(rendimientos_diarios) #nos interesa del diccionario la clave con el mayor valor
