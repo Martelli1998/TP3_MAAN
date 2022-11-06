@@ -67,7 +67,7 @@ def periodo_maxima_cantidad_dias_positivos(lista_rendimientos,lista_dias):  #Che
     indice = 0 #el indice se guarda
     for i in range(len(lista_rendimientos)):
         if lista_rendimientos[i] > 0:
-            longitud_actual += 1
+            longitud_actual = longitud_actual + 1
 
             if longitud_actual == 1:
                 indice = i
@@ -96,7 +96,7 @@ def Periodo_maxima_cantidad_dias_negativos(lista_rendimientos, lista_dias): #fun
     indice = 0
     for i in range(len(lista_rendimientos)):
         if lista_rendimientos[i] < 0:
-            longitud_actual += 1
+            longitud_actual = longitud_actual + 1
 
             if longitud_actual == 1:
                 indice = i
