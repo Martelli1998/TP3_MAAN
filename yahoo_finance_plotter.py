@@ -58,6 +58,25 @@ def media_movil(lista_cierre):
         i = i + 1
     return medias
 
+def grafico_matplot(q,lista_dias,lista_cierre):
+    lista_dias_Y_M_D = []
+    for i in lista_dias:
+        lista_dias_Y_M_D.append(to_ymd(i))
+    
+    x = lista_dias_Y_M_D
+    y = lista_cierre
+    
+    plt.plot(x, y,'o-')
+    plt.title(q)
+    plt.xlabel('date')
+    plt.ylabel('Price')
+    plt.xticks(rotation = 45)
+    plt.show()  
+    #descomentar para poder ver los graficos
+    ############### Grafico ##########
+
+
+
 ################################### Ejercicio 5 ###########################################################
 
 def periodo_maxima_cantidad_dias_positivos(lista_rendimientos,lista_dias):  #Chequiar caso en que el periodo entre en final de lista
@@ -218,22 +237,8 @@ def main():
         print()
         minimo_rendimiento(lista_cierre,lista_dias)
         
-       
-        #    # Agregamos el grafico de la serie.
-        ################## Graficamos #####
-        lista_dias_Y_M_D = []
-        for i in lista_dias:
-            lista_dias_Y_M_D.append(to_ymd(i))
-        
-        x = lista_dias_Y_M_D
-        y = lista_cierre
-        
-        plt.plot(x, y,'o-')
-        plt.title(q)
-        plt.xlabel('date')
-        plt.ylabel('Price')
-        plt.show()  #descomentar para poder ver los graficos
-        ############### Grafico ##########
+        grafico_matplot(q,lista_dias,lista_cierre)
+
 
     parametros = leer_cfg('input_ejercicio_5.cfg')[0:3]
     acciones = leer_cfg('input_ejercicio_5.cfg')[3:]
@@ -255,26 +260,17 @@ def main():
         lista_dias = get_quote_json(q,parametros[0],parametros[1],parametros[2])['chart']['result'][0]['timestamp']
         print(q)
         print()
+        print('lista_precios',lista_cierre)
+        print()
         print('media movil M = 6',media_movil(lista_cierre))
         print()        
         minimo_rendimiento(lista_cierre,lista_dias)
 
+        grafico_matplot(q,lista_dias,lista_cierre) #graficamos
 
-        #    # Agregamos el grafico de la serie.
+
         ################## Graficamos #####
-        lista_dias_Y_M_D = []
-        for i in lista_dias:
-            lista_dias_Y_M_D.append(to_ymd(i))
         
-        x = lista_dias_Y_M_D
-        y = lista_cierre
-        
-        plt.plot(x, y,'o-')
-        plt.title(q)
-        plt.xlabel('date')
-        plt.ylabel('Price')
-        plt.show()  #descomentar para poder ver los graficos
-        ############### Grafico ##########
 
 if __name__ == '__main__':
     main()
