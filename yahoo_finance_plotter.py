@@ -76,8 +76,8 @@ def grafico_matplot(q,lista_dias,lista_cierre):
     plt.xlabel('date')
     plt.ylabel('Price')
     plt.xticks(rotation = 45)
-    #plt.show()  
-    #descomentar para poder ver los graficos
+    plt.show()  
+    #descomentar/comentar para poder ver los graficos
     ############### Grafico ##########
 
 
