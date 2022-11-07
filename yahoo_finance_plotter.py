@@ -26,12 +26,12 @@ def get_quote_json(q, init_date, end_date, interval):
     r = urllib.request.urlopen(req).read()
     result = json.loads(r.decode('utf-8'))
     #si quieren exportar el Json descomentar las siguientes lineas.
-    f_out = open('acciones.json', 'w')
-    json.dump(result, f_out)
-    f_out.close()
+    #f_out = open('acciones.json', 'w')
+    #json.dump(result, f_out)
+    #f_out.close()
     return result
 
-#funcion auxiliar de ayuda para el codigo no se entrega
+#funcion auxiliar de ayuda visual (no se utilza)
 def lista_dias_YMD(lista_dias):
     YMD_list = list(map(to_ymd, lista_dias))
     return YMD_list
@@ -176,7 +176,7 @@ def minimo_rendimiento(lista_cierre,lista_dias):
                 rendimientos_diarios.append(rend)
             diccionario_rendimientos[(lista_cierre[j]/lista_cierre[i])-1] = ['fecha_compra',to_ymd(lista_dias[i]),'fecha_venta',to_ymd(lista_dias[j]),'cantidad_dias',(int((lista_dias[j]-lista_dias[i])/86400))]
             '''cada dia tiene 86400 segundos por lo cual dividimos el tiempo en formato posix por la cantidad de segundos del dia y nos retorna los dias que transcurieron'''
-
+            #corregimos con int debido al año bisiesto
     valor_rendiminto_min = min(rendimientos_diarios) #nos interesa del diccionario la clave con el mayor valor
     valor_rendiminto_min_formateado = str(round(valor_rendiminto_min*100,2))+'%' #formateamos el valor para permitir una mejor lectura en terminal
     print('Minimo rendimiento',valor_rendiminto_min_formateado) 
