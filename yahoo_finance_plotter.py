@@ -1,6 +1,5 @@
 import datetime
 import json
-import sys
 import urllib.request
 import matplotlib.pyplot as plt
 
@@ -164,7 +163,7 @@ def maximo_rendimiento(lista_cierre,lista_dias):
 def minimo_rendimiento(lista_cierre,lista_dias):
     rendimientos_diarios = [] #creamos lista con todos las combinanciones de rendimientos posiblees
     diccionario_rendimientos = {} #Creamos diccionario usando como clave los rendimientos y sus values con la informacion asociada a dicho rendimineto
-    
+
     for i in range(len(lista_cierre)-1):
         for j in range(len(lista_cierre)-1):
             if i < j:
