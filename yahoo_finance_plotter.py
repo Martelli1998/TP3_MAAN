@@ -27,9 +27,9 @@ def get_quote_json(q, init_date, end_date, interval):
     r = urllib.request.urlopen(req).read()
     result = json.loads(r.decode('utf-8'))
     #si quieren exportar el Json descomentar las siguientes lineas.
-    #f_out = open('acciones.json', 'w')
-    #json.dump(result, f_out)
-    #f_out.close()
+    f_out = open('acciones.json', 'w')
+    json.dump(result, f_out)
+    f_out.close()
     return result
 
 #funcion auxiliar de ayuda para el codigo no se entrega
