@@ -232,13 +232,8 @@ def main():
         print(q)
         print()
         #calculo_rendimiento(lista_cierre,lista_dias) #calculamos las metricas
-        print('lista_precios',lista_cierre)
         print()
-        print(lista_dias)
-        print()
-        print('lista Dias en formato YMD',lista_dias_YMD(lista_dias)) #imprimimos la lista de diasS
-        print()
-        print(diccionario(lista_cierre,lista_dias))
+        print('diccionario dias/precio',diccionario(lista_cierre,lista_dias))
         print()
         rendimientos = calculo_rendimiento(lista_cierre,lista_dias) #creamos lista rendimientos para utiliza en funcion Maxima cantidad dias
         print()
@@ -275,11 +270,7 @@ def main():
         lista_dias = get_quote_json(q,parametros[0],parametros[1],parametros[2])['chart']['result'][0]['timestamp']
         print(q)
         print()
-        print('lista_precios',lista_cierre)
-        print()
-        print(lista_dias_YMD(lista_dias))
-        print()
-        print(diccionario(lista_cierre,lista_dias))
+        print('diccionario dias/precio',diccionario(lista_cierre,lista_dias))
         print()
         print('media_movil M=6',media_movil(lista_cierre,6))
         print()        
