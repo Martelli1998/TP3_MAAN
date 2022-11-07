@@ -52,9 +52,9 @@ def calculo_rendimiento(lista_cierre,lista_dias):
         print(str(rendimiento_1)+'% ' + to_ymd(lista_dias[i+1])) #redondeamos el valor y agregamos el simbolo de porcentaje para una mejor lectura en terminal
     return rendimientos
 
-def media_movil(lista_cierre):
+def media_movil(lista_cierre,cantidad_dias):
     i = 0
-    M = 3 # media movil con m = 3 (cada 3 dias)
+    M = cantidad_dias # media movil con m = 3 (cada 3 dias)
     medias = []
     while i < len(lista_cierre) - M + 1:
         muestra_M = lista_cierre[i: i + M] #movemos la posicion de nuestros 3 elementos
@@ -236,7 +236,7 @@ def main():
         print()
         rendimientos = calculo_rendimiento(lista_cierre,lista_dias) #creamos lista rendimientos para utiliza en funcion Maxima cantidad dias
         print()
-        print('media movil M = 3',media_movil(lista_cierre))
+        print('media movil M = 3',media_movil(lista_cierre,3))
         print()
         periodo_maxima_cantidad_dias_positivos(rendimientos,lista_dias)
         print()
@@ -275,13 +275,13 @@ def main():
         print()
         print(diccionario(lista_cierre,lista_dias))
         print()
-        print('media movil M = 6',media_movil(lista_cierre))
+        print('media_movil M=6',media_movil(lista_cierre,6))
         print()        
         minimo_rendimiento(lista_cierre,lista_dias)
 
         grafico_matplot(q,lista_dias,lista_cierre) #graficamos
 
-        #probando branch
+        
         ################## Graficamos #####
         
 
