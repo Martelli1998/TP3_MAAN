@@ -54,7 +54,7 @@ def calculo_rendimiento(lista_cierre,lista_dias):
 
 def media_movil(lista_cierre,cantidad_dias):
     i = 0
-    M = cantidad_dias # media movil con m = 3 (cada 3 dias)
+    M = cantidad_dias
     medias = []
     while i < len(lista_cierre) - M + 1:
         muestra_M = lista_cierre[i: i + M] #movemos la posicion de nuestros 3 elementos
@@ -112,6 +112,7 @@ def periodo_maxima_cantidad_dias_positivos(lista_rendimientos,lista_dias):  #Che
     else: #si no hay longitud es debido a que no hubo rendimientos negativos en el periodo.
         print("No hay rendimientos negativos en el periodo")
     
+    return lista_rendimientos[contador_indice_max:contador_indice_max+longitud] #devolvemos los rendimientos del periodo
     
 def Periodo_maxima_cantidad_dias_negativos(lista_rendimientos, lista_dias): #funcion analoga a periodo_maxima_cantidad_dias_positivos.
     contador_indice_max = 0 
@@ -141,6 +142,8 @@ def Periodo_maxima_cantidad_dias_negativos(lista_rendimientos, lista_dias): #fun
 
     else:
         print("No hay rendimientos negativos en el periodo")
+    
+    return lista_rendimientos[contador_indice_max:contador_indice_max+longitud] 
 
 
 def maximo_rendimiento(lista_cierre,lista_dias):
@@ -159,6 +162,8 @@ def maximo_rendimiento(lista_cierre,lista_dias):
     valor_rendiminto_max_formateado = str(round(valor_rendiminto_max*100,2))+'%' #formateamos el valor para permitir una mejor lectura en terminal
     print('Maximo rendimiento',valor_rendiminto_max_formateado) 
     print(diccionario_rendimientos[valor_rendiminto_max])
+    
+    return valor_rendiminto_max_formateado
 
 def minimo_rendimiento(lista_cierre,lista_dias):
     rendimientos_diarios = [] #creamos lista con todos las combinanciones de rendimientos posiblees
@@ -176,6 +181,7 @@ def minimo_rendimiento(lista_cierre,lista_dias):
     valor_rendiminto_min_formateado = str(round(valor_rendiminto_min*100,2))+'%' #formateamos el valor para permitir una mejor lectura en terminal
     print('Minimo rendimiento',valor_rendiminto_min_formateado) 
     print(diccionario_rendimientos[valor_rendiminto_min])
+    return valor_rendiminto_min_formateado
 
 
 
@@ -228,7 +234,7 @@ def main():
         #calculo_rendimiento(lista_cierre,lista_dias) #calculamos las metricas
         print('lista_precios',lista_cierre)
         print()
-        print(lista_dias_YMD(lista_dias))
+        print(lista_dias)
         print()
         print('lista Dias en formato YMD',lista_dias_YMD(lista_dias)) #imprimimos la lista de diasS
         print()
@@ -238,7 +244,7 @@ def main():
         print()
         print('media movil M = 3',media_movil(lista_cierre,3))
         print()
-        periodo_maxima_cantidad_dias_positivos(rendimientos,lista_dias)
+        print(periodo_maxima_cantidad_dias_positivos(rendimientos,lista_dias))
         print()
         Periodo_maxima_cantidad_dias_negativos(rendimientos,lista_dias)
         print()
@@ -282,7 +288,6 @@ def main():
         grafico_matplot(q,lista_dias,lista_cierre) #graficamos
 
         
-        ################## Graficamos #####
         
 
 if __name__ == '__main__':
